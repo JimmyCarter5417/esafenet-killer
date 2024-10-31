@@ -27,7 +27,7 @@ def process_directory(src_dir, dst_dir):
             command = ["./notepad++.exe", src_entry, dst_entry]
             subprocess.run(command)
             # 通过 cp 命令还原原始文件名，只有 cp 命令不会加密，mv / ren / copy 都会加密
-            command = ["cp", dst_entry, dst_entry.rstrip(ext)]
+            command = ["cp", dst_entry, dst_entry.removesuffix(ext)]
             subprocess.run(command)
             # 删除 bin 文件
             os.remove(dst_entry)
